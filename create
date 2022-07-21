@@ -1,0 +1,54 @@
+SELECT * FROM account;
+
+insert into account(user_name, password, email, created_on, last_login)
+values
+('OhShit Rupani', 'sadiqlove3423','aanchalbhojani45@gmail.com',current_timestamp,'2022-08-22');
+
+select * from job;
+
+insert into job(job_name)
+values
+('Data Analytics'),
+('Data Scientist'),
+('Full Stack Developer'),
+('Front-end Develper'),
+('Artificial Intelligence');
+
+insert into account_job(user_id,job_id,hire_date)
+values
+(1,2,current_timestamp),
+(2,4,current_timestamp),
+(3,5,'2022-07-27'),
+(4,3,'2022-07-30'),
+(5,1,'2022-07-23');
+
+select * from account_job;
+
+select account_job.user_id, account_job.job_id, job.job_name, account.user_name, hire_date
+from account_job
+join job 
+on account_job.job_id = job.job_id
+join account 
+on account.user_id = account_job.user_id;
+
+select * from account;
+
+update account
+set last_login = current_timestamp
+where user_id = 5;
+
+update account_job
+set hire_date = account.created_on
+from account
+where account_job.user_id = account.user_id;
+
+select * from account_job;
+
+select * from job;
+
+insert into job(job_name)values('Astronaut');
+
+delete from job
+where job_id = 6
+returning job_id, job_name;
+

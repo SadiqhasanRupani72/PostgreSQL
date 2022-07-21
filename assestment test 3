@@ -1,0 +1,27 @@
+create table student(
+    student_id serial primary key,
+    first_name varchar(50),
+    last_name varchar(50),
+    homeroom_number varchar(300),
+    phone varchar(25) unique,
+    email varchar(300) unique,
+    graduation_year timestamp
+);
+
+create table teachers(
+    teacher_id serial primary key,
+    homeroom_number int,
+    department varchar(200),
+    email varchar(300) unique,
+    phone varchar(100) unique
+);
+
+insert into student(first_name, last_name, homeroom_number, phone,graduation_year)
+values
+('Mark','Watney', '5', '777-555-1234','2035-01-01');
+
+select * from teachers;
+
+insert into teachers(homeroom_number, department, email, phone)
+values
+(5,'Biology Department','jsalk@school.org','777-555-4321');
